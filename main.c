@@ -15,8 +15,8 @@ int main()
 // 필수조건1 의미 있는 변수 5개 이상 & 자료형 3개 이상(char,int,double)
 char destinationCode;   //여행지코드
 int totalPeople;                //여행 총 인원        
-int totalExpense;               // 현지 화폐 총 지출액 (예:유로)
-double exchangeRate =0.0;            // 현재 환율 
+double totalExpense;               // 현지 화폐 총 지출액 (예:유로)
+double exchangeRate = 0.0;            // 현재 환율 
 double individualLocal;         // 1인당 현지 화폐 부담액
 double individualKRW;          // 1인당 한국 원화 부담액 
 double discountRate= 0.0;
@@ -68,7 +68,7 @@ if(totalPeople >0)
   if(totalPeople >=5 && totalExpense >=1000.0)
   {
     discountRate = 0.05;
-    printf(" 단체 할인 5%가 적용 되었습니다!\n");
+    printf(" 단체 할인 5%%가 적용 되었습니다!\n");
   }
   else
   {
@@ -92,7 +92,9 @@ individualKRW = individualLocal * exchangeRate;
 printf("\n=============== 최종 정산 결과 =============\n");
 printf(" 총인원 :%d명\n ", totalPeople);
 printf(" 1인당 현지 화폐 부담액 : %.2f  단위\n", individualLocal);
+printf(" 1인당 한국 원화 부담액 : %.0f 원\n " ,individualKRW);
 printf("=============================================\n");
+
 
 return 0;
 }

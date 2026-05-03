@@ -14,7 +14,7 @@ int main()
 
 // 필수조건1 의미 있는 변수 5개 이상 & 자료형 3개 이상(char,int,double)
 char destinationCode;   //여행지코드
-int totalpeople;                //여행 총 인원        
+int totalPeople;                //여행 총 인원        
 int totalExpense;               // 현지 화폐 총 지출액 (예:유로)
 double exchangeRate =0.0;            // 현재 환율 
 double individualLocal;         // 1인당 현지 화폐 부담액
@@ -27,7 +27,7 @@ printf(" 현재 정산 지역 코드  (E : 유럽, U : 미국, J :일본): \n" )
 scanf(" %c" , &destinationCode);
 
 printf("1. 여행을 참여한 총 인원수를 입력하세요: ");
-scanf("%d", &totalpeople);
+scanf("%d", &totalPeople);
 
 
 printf(" 2. 현지에서 사용한 총 금액을 입력하세요:"); 
@@ -40,7 +40,7 @@ printf("--------------------------------------------------\n");
   
 //필수 조건3 다중 조건문 & 논리 연산자 사용
 
-if(destiantionCode == 'E' || destinationCode =='e')
+if(destinationCode == 'E' || destinationCode =='e')
 {
   exchangeRate =1450.0;
   printf(" 유로 환율 1450원이 적용됩니다.\n");
@@ -65,7 +65,7 @@ else
 
 if(totalPeople >0)
 {
-  if(totalPoeple >=5 && totalExpense >=1000.0)
+  if(totalPeople >=5 && totalExpense >=1000.0)
   {
     discountRate = 0.05;
     printf(" 단체 할인 5%가 적용 되었습니다!\n");
@@ -80,6 +80,10 @@ else
   printf("인원수는 1명 이상이어야 합니다. 프로그램을 종료합니다.\n");
 return 0;  
  }
+
+totalExpense = totalExpense - (totalExpense * discountRate); 
+
+  
 individualLocal = totalExpense / totalPeople;
 individualKRW = individualLocal * exchangeRate;
 

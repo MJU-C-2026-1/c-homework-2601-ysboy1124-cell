@@ -7,12 +7,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 #define SIZE 3
 
 // [함수 모듈화] 함수 선언(프로토타입)
 double calcTotal(double arr[], int size);
-double calDiscount(int people, double total);
+double calcDiscount(int people, double total);
 void printResult(char name[], char dc, int people, double local, double krw);
 
 int main()
@@ -24,7 +23,7 @@ int menu;
 while(1)
 {
  printf("\n1. 글로벌 정산기/ 0. 종료 :");
- scanf("%d", menu);
+ scanf("%d", &menu);
 
  if(menu==0)
  {
@@ -46,12 +45,12 @@ while(1)
  printf("대표자 이름 입력 : ");
  scanf("%s", name);
  printf(" 지역 코드 입력(E/U/J):");
- scanf("%c",&dc);
+ scanf(" %c",&dc);
  printf(" 총인원수 입력 :");
  scanf("%d", &tp);
 
  printf("식비, 숙박비,교통비 금액을 차례로 입력:\n");
- for(int i=0; i<size; i++)
+ for(int i=0; i<SIZE; i++)
  {
   scanf("%lf", &expense[i]);
 
@@ -79,8 +78,8 @@ while(1)
   }
 
   //[데이터 전달] 함수 호출을 통한 계산 처리
-  total= calcTotal(expenses,SIZE); //배열을 매개변수로 전달
- double dc_rate= calDiscount(tp, total);
+  total= calcTotal(expense,SIZE); //배열을 매개변수로 전달
+ double dc_rate= calcDiscount(tp, total);
  total= total*(1.0 - dc_rate);//할인 적용
 
  individual = total/tp;
@@ -96,7 +95,7 @@ return 0;
 
 
 
-===========함수구현부==========
+
 //기능: 배열 요소를 모두 더해 총합을 구한다
 double calcTotal(double arr[], int size)
 {
@@ -117,7 +116,7 @@ double calcDiscount(int people, double total)
     return 0.05; //5% 할인
 
   }
-  return 0;
+  return 0.0;
 }
 
 //기능: 독립된 블록에서 최종 결과를 양식에 맞춰 출력
@@ -147,6 +146,7 @@ void printResult( char name[], char dc, int people, double local, double krw)
 
   printf("1인당 한국 원화: %.0f 원\n",krw);
 }
+
 
 
 
